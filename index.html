@@ -77,6 +77,10 @@
 
     window.addEventListener('resize', adjustHeight);
     window.addEventListener('load', adjustHeight);
+    document.querySelectorAll('input, textarea').forEach(input => {
+      input.addEventListener('focus', adjustHeight);
+      input.addEventListener('blur', adjustHeight);
+    });
   </script>
   <div class="page">
     <div class="language-buttons btn-group" role="group" aria-label="language-buttons">
