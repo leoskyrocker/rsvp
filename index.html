@@ -56,6 +56,10 @@
       const container = document.querySelector('.page');
       const viewportHeight = window.innerHeight;
       container.style.height = `${viewportHeight}px`;
+
+      setTimeout(() => {
+        window.scrollTo(0, 1);
+      }, 500);
     }
 
     function changeTypeform(language) {
