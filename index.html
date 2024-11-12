@@ -13,7 +13,6 @@
     }
     .page {
       position: relative;
-      height: 100vh;
       padding-bottom: env(safe-area-inset-bottom);
       padding-top: env(safe-area-inset-top);
       padding-left: env(safe-area-inset-left);
@@ -32,7 +31,7 @@
       top: 0;
       left: 0;
       width: 100vw;
-      height: 100%;
+      height: 100vh;
     }
     iframe {
       width: 100%;
@@ -52,6 +51,12 @@
 <body>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script>
+    function adjustHeight() {
+      const container = document.getElementById('typeform-container'); // Get the element by ID
+      const viewportHeight = window.innerHeight;
+      container.style.height = `${viewportHeight}px`;
+    }
+
     function changeTypeform(language) {
       let newTfLiveId;
       if (language === 'en') {
@@ -68,16 +73,14 @@
       script.src = 'https://embed.typeform.com/next/embed.js';
       container.appendChild(script);
     }
-</script>
+
+    window.addEventListener('resize', adjustHeight);
+    adjustHeight();
+  </script>
   <div class="page">
     <div class="language-buttons btn-group" role="group" aria-label="language-buttons">
       <button type="button" onclick="changeTypeform('tc')" class="btn btn-outline-primary">繁</button>
       <button type="button" onclick="changeTypeform('en')" class="btn btn-outline-primary">En</button>
-    </div>
-    <div class="btn-group" role="group" aria-label="Basic outlined example">
-      <button type="button" class="btn btn-outline-primary">Left</button>
-      <button type="button" class="btn btn-outline-primary">Middle</button>
-      <button type="button" class="btn btn-outline-primary">Right</button>
     </div>
     <div id="typeform-container" data-tf-live="01JCG0X6YQ6ZJJFWYF3Q4EQDTJ"></div><script src="https://embed.typeform.com/next/embed.js"></script>
   </div>
